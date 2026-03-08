@@ -1,0 +1,123 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="1200" height="800" fill="white"/>
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#50C878;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3FA968;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E55555;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">System Architecture</text>
+  
+  <!-- Wi-Fi CSI Data Source -->
+  <rect x="50" y="80" width="200" height="120" rx="10" fill="url(#grad1)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="150" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Wi-Fi CSI</text>
+  <text x="150" y="135" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Data Source</text>
+  <text x="150" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Channel State</text>
+  <text x="150" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Information</text>
+  
+  <!-- Flask Backend -->
+  <rect x="350" y="80" width="200" height="120" rx="10" fill="url(#grad2)" stroke="#2E7D4E" stroke-width="2"/>
+  <text x="450" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Flask Backend</text>
+  <text x="450" y="135" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">REST API</text>
+  <text x="450" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Authentication</text>
+  <text x="450" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Route Handlers</text>
+  
+  <!-- Preprocessing Module -->
+  <rect x="650" y="80" width="200" height="120" rx="10" fill="url(#grad1)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="750" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Preprocessing</text>
+  <text x="750" y="135" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Module</text>
+  <text x="750" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Denoising</text>
+  <text x="750" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Phase Calibration</text>
+  
+  <!-- Feature Extraction -->
+  <rect x="950" y="80" width="200" height="120" rx="10" fill="url(#grad2)" stroke="#2E7D4E" stroke-width="2"/>
+  <text x="1050" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Feature</text>
+  <text x="1050" y="135" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Extraction</text>
+  <text x="1050" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Spectral</text>
+  <text x="1050" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Statistical</text>
+  
+  <!-- ML Models -->
+  <rect x="200" y="280" width="180" height="140" rx="10" fill="url(#grad3)" stroke="#B84444" stroke-width="2"/>
+  <text x="290" y="310" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Respiration</text>
+  <text x="290" y="335" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">CNN Model</text>
+  <text x="290" y="360" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Respiration Rate</text>
+  <text x="290" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Estimation</text>
+  <text x="290" y="400" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">12-20 bpm</text>
+  
+  <rect x="420" y="280" width="180" height="140" rx="10" fill="url(#grad3)" stroke="#B84444" stroke-width="2"/>
+  <text x="510" y="310" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Cardiac</text>
+  <text x="510" y="335" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">LSTM Model</text>
+  <text x="510" y="360" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Heart Rate</text>
+  <text x="510" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">HRV Analysis</text>
+  <text x="510" y="400" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">60-100 bpm</text>
+  
+  <rect x="640" y="280" width="180" height="140" rx="10" fill="url(#grad3)" stroke="#B84444" stroke-width="2"/>
+  <text x="730" y="310" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Mobility</text>
+  <text x="730" y="335" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">TCN Model</text>
+  <text x="730" y="360" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Activity</text>
+  <text x="730" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Classification</text>
+  <text x="730" y="400" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Fall Detection</text>
+  
+  <!-- SQLite Database -->
+  <rect x="200" y="500" width="200" height="120" rx="10" fill="url(#grad2)" stroke="#2E7D4E" stroke-width="2"/>
+  <text x="300" y="530" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">SQLite Database</text>
+  <text x="300" y="555" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Patients</text>
+  <text x="300" y="580" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Recordings</text>
+  <text x="300" y="605" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Metrics &amp; Alerts</text>
+  
+  <!-- Risk Scoring -->
+  <rect x="500" y="500" width="200" height="120" rx="10" fill="url(#grad1)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="600" y="530" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Risk Scoring</text>
+  <text x="600" y="555" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Multi-Modal</text>
+  <text x="600" y="580" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Fusion</text>
+  <text x="600" y="605" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Alert Generation</text>
+  
+  <!-- Frontend -->
+  <rect x="800" y="500" width="200" height="120" rx="10" fill="url(#grad1)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="900" y="530" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Frontend</text>
+  <text x="900" y="555" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Web Dashboard</text>
+  <text x="900" y="580" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Visualization</text>
+  <text x="900" y="605" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Patient Management</text>
+  
+  <!-- Arrows -->
+  <path d="M 250 140 L 350 140" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 550 140 L 650 140" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 850 140 L 950 140" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1050 200 L 290 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1050 200 L 510 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1050 200 L 730 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 290 420 L 300 500" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 510 420 L 300 500" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 730 420 L 300 500" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 400 560 L 500 560" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 700 560 L 800 560" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 600 620 L 600 680" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Alert Output -->
+  <rect x="500" y="680" width="200" height="80" rx="10" fill="url(#grad3)" stroke="#B84444" stroke-width="2"/>
+  <text x="600" y="710" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Health Alerts</text>
+  <text x="600" y="735" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Low / Medium / High</text>
+  <text x="600" y="755" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Risk Notifications</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+</svg>
+
+
+
+

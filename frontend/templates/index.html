@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Health Monitoring System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="jumbotron text-white p-5 rounded-4 position-relative">
+            <div class="position-relative" style="z-index: 2;">
+                <h1 class="display-3 fw-bold mb-3">
+                    <i class="fas fa-heartbeat me-3"></i>HealthMonitor
+                </h1>
+                <p class="lead fs-4 mb-2">Non-Contact Multi-Model Health Monitoring</p>
+                <p class="fs-5 mb-4 opacity-90">Powered by Wi-Fi Channel State Information (CSI) Technology</p>
+                <hr class="my-4 opacity-50">
+                <p class="fs-6 mb-4">Monitor vital signs and health metrics in real-time using advanced wireless sensing technology. No wearables required.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a class="btn btn-light btn-lg px-4 py-3" href="{{ url_for('demo') }}" role="button">
+                        <i class="fas fa-play me-2"></i>Try Live Demo
+                    </a>
+                    <a class="btn btn-outline-light btn-lg px-4 py-3" href="{{ url_for('patients') }}" role="button">
+                        <i class="fas fa-users me-2"></i>View Patients
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feature Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-4">
+                    <div class="icon-circle bg-primary bg-opacity-10 mx-auto" style="width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-users fa-2x text-primary"></i>
+                    </div>
+                </div>
+                <h5 class="card-title fw-bold mb-3">Patient Management</h5>
+                <p class="card-text text-muted mb-4">Comprehensive patient profiles with medical history, conditions, and real-time health tracking.</p>
+                <a href="{{ url_for('patients') }}" class="btn btn-primary px-4">
+                    <i class="fas fa-arrow-right me-2"></i>Manage Patients
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-4">
+                    <div class="icon-circle bg-success bg-opacity-10 mx-auto" style="width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-chart-line fa-2x text-success"></i>
+                    </div>
+                </div>
+                <h5 class="card-title fw-bold mb-3">Health Monitoring</h5>
+                <p class="card-text text-muted mb-4">Real-time vital signs monitoring including heart rate, respiration, HRV, and activity detection.</p>
+                <a href="{{ url_for('recordings') }}" class="btn btn-success px-4">
+                    <i class="fas fa-arrow-right me-2"></i>View Recordings
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-4">
+                    <div class="icon-circle bg-info bg-opacity-10 mx-auto" style="width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-upload fa-2x text-info"></i>
+                    </div>
+                </div>
+                <h5 class="card-title fw-bold mb-3">Data Upload</h5>
+                <p class="card-text text-muted mb-4">Upload CSI recordings for instant analysis with AI-powered health metric extraction.</p>
+                <a href="{{ url_for('upload_recording') }}" class="btn btn-info px-4">
+                    <i class="fas fa-arrow-right me-2"></i>Upload Data
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Metrics Overview -->
+<div class="row g-4 mb-5">
+    <div class="col-md-3 col-sm-6">
+        <div class="metric-card success">
+            <div class="metric-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="metric-value">98%</div>
+            <div class="metric-label">Accuracy Rate</div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="metric-card info">
+            <div class="metric-icon">
+                <i class="fas fa-wifi"></i>
+            </div>
+            <div class="metric-value">24/7</div>
+            <div class="metric-label">Monitoring</div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="metric-card warning">
+            <div class="metric-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Non-Contact</div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="metric-card danger">
+            <div class="metric-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="metric-value">Real-time</div>
+            <div class="metric-label">Alerts</div>
+        </div>
+    </div>
+</div>
+
+<!-- System Features -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card border-0">
+            <div class="card-header text-white">
+                <h5 class="mb-0 fw-bold">
+                    <i class="fas fa-star me-2"></i>Advanced Features
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold mb-3">
+                            <i class="fas fa-heartbeat text-danger me-2"></i>Vital Signs Monitoring
+                        </h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Heart Rate Detection</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Respiration Rate Monitoring</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Heart Rate Variability (HRV)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Activity Classification</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold mb-3">
+                            <i class="fas fa-shield-alt text-warning me-2"></i>Health Assessment
+                        </h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>AI-Powered Risk Scoring</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Intelligent Alert Generation</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Historical Trend Analysis</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Privacy-First Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0">
+            <div class="card-header text-white">
+                <h5 class="mb-0 fw-bold">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ url_for('new_patient') }}" class="btn btn-outline-primary w-100 py-3">
+                            <i class="fas fa-user-plus me-2"></i>Add New Patient
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ url_for('upload_recording') }}" class="btn btn-outline-success w-100 py-3">
+                            <i class="fas fa-cloud-upload-alt me-2"></i>Upload Recording
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ url_for('demo') }}" class="btn btn-outline-info w-100 py-3">
+                            <i class="fas fa-play-circle me-2"></i>Run Demo
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="{{ url_for('health_status') }}" class="btn btn-outline-warning w-100 py-3">
+                            <i class="fas fa-heartbeat me-2"></i>System Status
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

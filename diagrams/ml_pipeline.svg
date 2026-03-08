@@ -1,0 +1,189 @@
+<svg width="1600" height="1100" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="1600" height="1100" fill="white"/>
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#74B9FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0984E3;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="modelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A29BFE;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6C5CE7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#55EFC4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00B894;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="800" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Machine Learning Pipeline</text>
+  
+  <!-- Input: Raw CSI Data -->
+  <rect x="50" y="80" width="300" height="120" rx="10" fill="url(#inputGrad)" stroke="#0575C4" stroke-width="2"/>
+  <text x="200" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Raw CSI Data</text>
+  <text x="200" y="145" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Complex-valued signals</text>
+  <text x="200" y="165" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Amplitude &amp; Phase</text>
+  <text x="200" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Time series data</text>
+  
+  <!-- Preprocessing Steps -->
+  <rect x="400" y="80" width="250" height="120" rx="10" fill="#E17055" stroke="#C95D4A" stroke-width="2"/>
+  <text x="525" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Preprocessing</text>
+  <line x1="400" y1="130" x2="650" y2="130" stroke="white" stroke-width="1"/>
+  <text x="525" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">• Denoising (Median Filter)</text>
+  <text x="525" y="170" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">• Phase Calibration</text>
+  <text x="525" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">• DC Removal</text>
+  
+  <!-- Feature Extraction -->
+  <rect x="700" y="80" width="250" height="120" rx="10" fill="#FDCB6E" stroke="#E8A84A" stroke-width="2"/>
+  <text x="825" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Feature Extraction</text>
+  <line x1="700" y1="130" x2="950" y2="130" stroke="#333" stroke-width="1"/>
+  <text x="825" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">• Spectral Features</text>
+  <text x="825" y="170" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">• Statistical Features</text>
+  <text x="825" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">• Respiratory/Cardiac/Mobility</text>
+  
+  <!-- Feature Normalization -->
+  <rect x="1000" y="80" width="200" height="120" rx="10" fill="#E17055" stroke="#C95D4A" stroke-width="2"/>
+  <text x="1100" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Normalization</text>
+  <text x="1100" y="145" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">StandardScaler</text>
+  <text x="1100" y="165" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Mean=0, Std=1</text>
+  
+  <!-- Arrows -->
+  <path d="M 350 140 L 400 140" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 650 140 L 700 140" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 950 140 L 1000 140" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Respiration Model -->
+  <rect x="50" y="280" width="350" height="280" rx="10" fill="url(#modelGrad)" stroke="#5A4FCF" stroke-width="3"/>
+  <text x="225" y="315" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Respiration CNN Model</text>
+  
+  <!-- CNN Architecture -->
+  <rect x="70" y="340" width="310" height="200" rx="5" fill="white" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="225" y="365" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Architecture</text>
+  
+  <rect x="80" y="380" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="225" y="397" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(32) + BatchNorm + MaxPool</text>
+  
+  <rect x="80" y="410" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="225" y="427" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(64) + BatchNorm + MaxPool</text>
+  
+  <rect x="80" y="440" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="225" y="457" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(128) + BatchNorm + MaxPool</text>
+  
+  <rect x="80" y="470" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="225" y="487" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">FC(256) → FC(64) → FC(1)</text>
+  
+  <rect x="80" y="500" width="290" height="25" rx="3" fill="#55EFC4" stroke="#00B894" stroke-width="1"/>
+  <text x="225" y="517" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Output: Respiration Rate (bpm)</text>
+  
+  <!-- Cardiac Model -->
+  <rect x="450" y="280" width="350" height="280" rx="10" fill="url(#modelGrad)" stroke="#5A4FCF" stroke-width="3"/>
+  <text x="625" y="315" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Cardiac LSTM Model</text>
+  
+  <!-- LSTM Architecture -->
+  <rect x="470" y="340" width="310" height="200" rx="5" fill="white" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="625" y="365" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Architecture</text>
+  
+  <rect x="480" y="380" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="625" y="397" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">LSTM(64, 2 layers) + Dropout(0.2)</text>
+  
+  <rect x="480" y="410" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="625" y="427" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">FC(128) + Dropout(0.5)</text>
+  
+  <rect x="480" y="440" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="625" y="457" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">FC(64) + Dropout(0.3)</text>
+  
+  <rect x="480" y="470" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="625" y="487" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">FC(2)</text>
+  
+  <rect x="480" y="500" width="290" height="25" rx="3" fill="#55EFC4" stroke="#00B894" stroke-width="1"/>
+  <text x="625" y="517" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Output: Heart Rate, HRV</text>
+  
+  <!-- Mobility Model -->
+  <rect x="850" y="280" width="350" height="280" rx="10" fill="url(#modelGrad)" stroke="#5A4FCF" stroke-width="3"/>
+  <text x="1025" y="315" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Mobility TCN Model</text>
+  
+  <!-- TCN Architecture -->
+  <rect x="870" y="340" width="310" height="200" rx="5" fill="white" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="1025" y="365" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Architecture</text>
+  
+  <rect x="880" y="380" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="1025" y="397" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(64) + BatchNorm + ReLU</text>
+  
+  <rect x="880" y="410" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="1025" y="427" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(128) + BatchNorm + ReLU</text>
+  
+  <rect x="880" y="440" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="1025" y="457" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Conv1D(256) + BatchNorm + ReLU</text>
+  
+  <rect x="880" y="470" width="290" height="25" rx="3" fill="#E8F4F8" stroke="#5A4FCF" stroke-width="1"/>
+  <text x="1025" y="487" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">AdaptiveAvgPool + FC(128) → FC(5)</text>
+  
+  <rect x="880" y="500" width="290" height="25" rx="3" fill="#55EFC4" stroke="#00B894" stroke-width="1"/>
+  <text x="1025" y="517" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Output: Activity Class (5 classes)</text>
+  
+  <!-- Arrows from Normalization to Models -->
+  <path d="M 1100 200 L 225 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1100 200 L 625 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1100 200 L 1025 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Output Section -->
+  <rect x="200" y="650" width="300" height="100" rx="10" fill="url(#outputGrad)" stroke="#00A085" stroke-width="2"/>
+  <text x="350" y="685" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Respiration Rate</text>
+  <text x="350" y="710" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">12-20 breaths/min</text>
+  <text x="350" y="735" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Normal Range</text>
+  
+  <rect x="550" y="650" width="300" height="100" rx="10" fill="url(#outputGrad)" stroke="#00A085" stroke-width="2"/>
+  <text x="700" y="685" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Cardiac Metrics</text>
+  <text x="700" y="710" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Heart Rate: 60-100 bpm</text>
+  <text x="700" y="735" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">HRV: 20-50 ms</text>
+  
+  <rect x="900" y="650" width="300" height="100" rx="10" fill="url(#outputGrad)" stroke="#00A085" stroke-width="2"/>
+  <text x="1050" y="685" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Activity Classification</text>
+  <text x="1050" y="710" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">normal/walking/sitting</text>
+  <text x="1050" y="735" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">standing/fall</text>
+  
+  <!-- Arrows from Models to Outputs -->
+  <path d="M 225 560 L 350 650" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 625 560 L 700 650" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1025 560 L 1050 650" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Training Info -->
+  <rect x="50" y="800" width="1200" height="200" rx="10" fill="#F5F5F5" stroke="#333" stroke-width="1"/>
+  <text x="650" y="835" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Training Configuration</text>
+  
+  <rect x="80" y="860" width="250" height="120" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+  <text x="205" y="885" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Loss Function</text>
+  <text x="205" y="910" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Respiration: MSE</text>
+  <text x="205" y="930" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Cardiac: MSE</text>
+  <text x="205" y="950" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Mobility: CrossEntropy</text>
+  
+  <rect x="380" y="860" width="250" height="120" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+  <text x="505" y="885" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Optimizer</text>
+  <text x="505" y="910" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Adam Optimizer</text>
+  <text x="505" y="930" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Learning Rate: 0.001</text>
+  <text x="505" y="950" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Weight Decay: 1e-5</text>
+  
+  <rect x="710" y="860" width="250" height="120" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+  <text x="835" y="885" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Training Data</text>
+  <text x="835" y="910" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Synthetic CSI Data</text>
+  <text x="835" y="930" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Train/Val Split: 80/20</text>
+  <text x="835" y="950" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Batch Size: 32</text>
+  
+  <rect x="1040" y="860" width="180" height="120" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+  <text x="1130" y="885" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Epochs</text>
+  <text x="1130" y="910" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Early Stopping</text>
+  <text x="1130" y="930" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Patience: 10</text>
+  <text x="1130" y="950" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">Max: 100</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+</svg>
+
+
+
+

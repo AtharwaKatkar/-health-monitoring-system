@@ -1,0 +1,132 @@
+<svg width="1400" height="900" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="1400" height="900" fill="white"/>
+  <defs>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6C5CE7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A4FCF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="processGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00B894;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00A085;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDCB6E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8A84A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="700" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Data Flow Diagram</text>
+  
+  <!-- Stage 1: Data Collection -->
+  <rect x="50" y="80" width="200" height="100" rx="10" fill="url(#dataGrad)" stroke="#4A3FA8" stroke-width="2"/>
+  <text x="150" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">1. Data Collection</text>
+  <text x="150" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Wi-Fi CSI Signals</text>
+  <text x="150" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Raw JSON Files</text>
+  
+  <!-- Stage 2: Data Ingestion -->
+  <rect x="300" y="80" width="200" height="100" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="400" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">2. Data Ingestion</text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">POST /recordings</text>
+  <text x="400" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Store in Database</text>
+  
+  <!-- Stage 3: Preprocessing -->
+  <rect x="550" y="80" width="200" height="100" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="650" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">3. Preprocessing</text>
+  <text x="650" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Denoising</text>
+  <text x="650" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Phase Calibration</text>
+  
+  <!-- Stage 4: Feature Extraction -->
+  <rect x="800" y="80" width="200" height="100" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="900" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">4. Feature</text>
+  <text x="900" y="135" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Extraction</text>
+  <text x="900" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Spectral, Statistical</text>
+  
+  <!-- Stage 5: ML Inference -->
+  <rect x="1050" y="80" width="200" height="100" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="1150" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">5. ML Inference</text>
+  <text x="1150" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Model Predictions</text>
+  <text x="1150" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Health Metrics</text>
+  
+  <!-- Arrows Stage 1-5 -->
+  <path d="M 250 130 L 300 130" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 500 130 L 550 130" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 750 130 L 800 130" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 1000 130 L 1050 130" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- ML Models Detail -->
+  <rect x="200" y="250" width="250" height="120" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="325" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Respiration CNN</text>
+  <text x="325" y="305" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Input: Features</text>
+  <text x="325" y="325" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Output: Respiration Rate</text>
+  <text x="325" y="345" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(12-20 breaths/min)</text>
+  
+  <rect x="500" y="250" width="250" height="120" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="625" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Cardiac LSTM</text>
+  <text x="625" y="305" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Input: Features</text>
+  <text x="625" y="325" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Output: Heart Rate, HRV</text>
+  <text x="625" y="345" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(60-100 bpm)</text>
+  
+  <rect x="800" y="250" width="250" height="120" rx="10" fill="url(#processGrad)" stroke="#008A6E" stroke-width="2"/>
+  <text x="925" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Mobility TCN</text>
+  <text x="925" y="305" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Input: Features</text>
+  <text x="925" y="325" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Output: Activity Label</text>
+  <text x="925" y="345" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(normal/walking/fall)</text>
+  
+  <!-- Arrows from Feature Extraction to Models -->
+  <path d="M 900 180 L 325 250" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 900 180 L 625 250" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 900 180 L 925 250" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Risk Scoring -->
+  <rect x="400" y="430" width="350" height="100" rx="10" fill="url(#outputGrad)" stroke="#D4A047" stroke-width="2"/>
+  <text x="575" y="465" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">6. Risk Scoring</text>
+  <text x="575" y="490" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Multi-Modal Fusion</text>
+  <text x="575" y="510" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Respiration (40%) + Cardiac (40%) + Mobility (20%)</text>
+  
+  <!-- Arrows from Models to Risk Scoring -->
+  <path d="M 325 370 L 475 430" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 625 370 L 575 430" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 925 370 L 675 430" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Database Storage -->
+  <rect x="200" y="600" width="200" height="100" rx="10" fill="url(#dataGrad)" stroke="#4A3FA8" stroke-width="2"/>
+  <text x="300" y="635" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Database</text>
+  <text x="300" y="660" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Store Metrics</text>
+  <text x="300" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Store Features</text>
+  
+  <!-- Alert Generation -->
+  <rect x="500" y="600" width="200" height="100" rx="10" fill="url(#outputGrad)" stroke="#D4A047" stroke-width="2"/>
+  <text x="600" y="635" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">7. Alert</text>
+  <text x="600" y="655" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Generation</text>
+  <text x="600" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Low/Medium/High</text>
+  
+  <!-- API Response -->
+  <rect x="800" y="600" width="200" height="100" rx="10" fill="url(#outputGrad)" stroke="#D4A047" stroke-width="2"/>
+  <text x="900" y="635" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">8. API Response</text>
+  <text x="900" y="660" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">GET /metrics</text>
+  <text x="900" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">JSON Output</text>
+  
+  <!-- Arrows from Risk Scoring -->
+  <path d="M 500 480 L 300 600" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 650 530 L 600 600" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 750 530 L 800 600" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Data Flow Labels -->
+  <text x="275" y="125" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Raw CSI</text>
+  <text x="525" y="125" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Upload</text>
+  <text x="775" y="125" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Clean</text>
+  <text x="1025" y="125" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Features</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+</svg>
+
+
+
+
