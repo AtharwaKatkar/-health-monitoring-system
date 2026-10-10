@@ -28,7 +28,8 @@ app = Flask(__name__,
 
 # Configuration
 app.config.from_object(Config)
-app.secret_key = 'dev-secret-key-change-in-production'
+# Use environment variable for secret key in production, fall back to dev key
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'frontend', 'uploads')
 ALLOWED_EXTENSIONS = {'json', 'csv'}
@@ -45,9 +46,97 @@ app.register_blueprint(patients_bp, url_prefix='/api/v1')
 app.register_blueprint(inference_bp, url_prefix='/api/v1')
 app.register_blueprint(health_bp, url_prefix='/api/v1')
 
-# Create database tables
+# Create database tables and seed demo data
+def seed_demo_data():
+    """Seed the database with demo patients and recordings for portfolio viewing."""
+    import random
+    from backend.models import Patient, Recording, Feature, Metric, Alert
+
+    # Only seed if no patients exist yet
+    if Patient.query.count() > 0:
+        return
+
+    demo_patients = [
+        {"name": "Eleanor Vance", "age": 67, "conditions": "Hypertension, Type 2 Diabetes"},
+        {"name": "Marcus Chen", "age": 54, "conditions": "Atrial Fibrillation"},
+        {"name": "Priya Nair", "age": 72, "conditions": "COPD"},
+        {"name": "James Okafor", "age": 45, "conditions": "Sleep Apnea"},
+        {"name": "Sofia Reyes", "age": 60, "conditions": "Post-surgical recovery"},
+    ]
+
+    for pd_ in demo_patients:
+        patient = Patient(name=pd_["name"], age=pd_["age"], conditions=pd_["conditions"])
+        db.session.add(patient)
+    db.session.commit()
+
+    # Add demo recordings + processed metrics for each patient
+    patients = Patient.query.all()
+    activities = ["sitting", "standing", "walking", "resting"]
+    risk_levels = [
+        (12, 15, 16, 18, 40, 60),   # low-risk params: hr_lo, hr_hi, resp_lo, resp_hi, hrv_lo, hrv_hi
+        (70, 90, 14, 18, 50, 80),
+        (80, 100, 14, 20, 35, 65),
+    ]
+
+    for patient in patients:
+        for i in range(3):
+            params = random.choice(risk_levels)
+            hr = random.randint(params[0], params[1])
+            resp = random.randint(params[2], params[3])
+            hrv = random.randint(params[4], params[5])
+            activity = random.choice(activities)
+            risk = round(random.uniform(15, 75), 1)
+
+            # Dummy file path (file won't exist, that's OK for demo display)
+            fake_path = f"./data/synthetic/demo_patient_{patient.id}_recording_{i+1}.json"
+
+            recording = Recording(
+                patient_id=patient.id,
+                path=fake_path,
+                device_id=f"wifi_sensor_0{i+1}",
+                timestamp=datetime(2026, 10, 10 - i * 2, 9 + i, 30),
+                processed=True,
+            )
+            db.session.add(recording)
+            db.session.flush()  # get recording.id
+
+            feature_record = Feature(
+                recording_id=recording.id,
+                feature_json={
+                    "mean": [round(random.uniform(-0.5, 0.5), 4) for _ in range(3)],
+                    "std": [round(random.uniform(0.8, 1.2), 4) for _ in range(3)],
+                    "demo": True,
+                },
+            )
+            db.session.add(feature_record)
+
+            metric_record = Metric(
+                recording_id=recording.id,
+                respiration_rate=float(resp),
+                heart_rate=float(hr),
+                hrv=float(hrv),
+                activity_label=activity,
+                risk_score=risk,
+            )
+            db.session.add(metric_record)
+            db.session.flush()
+
+            # Create alert if risk is high enough
+            if risk >= 60:
+                alert = Alert(
+                    patient_id=patient.id,
+                    metric_id=metric_record.id,
+                    level="high" if risk >= 75 else "medium",
+                    message=f"Elevated risk score {risk:.1f} detected during {activity}.",
+                )
+                db.session.add(alert)
+
+    db.session.commit()
+
+
 with app.app_context():
     db.create_all()
+    seed_demo_data()
 
 # Helper functions
 def allowed_file(filename):
@@ -381,11 +470,13 @@ def run_demo():
         return jsonify({'success': False, 'error': str(e)})
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV', 'production') != 'production'
     print("=" * 60)
     print("Health Monitoring System - Unified Server")
     print("=" * 60)
-    print(f"Frontend & Backend running on: http://localhost:5000")
-    print(f"API endpoints available at: http://localhost:5000/api/v1")
+    print(f"Frontend & Backend running on: http://localhost:{port}")
+    print(f"API endpoints available at: http://localhost:{port}/api/v1")
     print(f"Upload folder: {UPLOAD_FOLDER}")
     print("=" * 60)
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=debug, host='0.0.0.0', port=port, use_reloader=False)
