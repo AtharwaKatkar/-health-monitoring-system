@@ -52,9 +52,9 @@ frontend/uploads/*
 .DS_Store
 Thumbs.db
 
-# Model files (large)
-models/*.pth
-models/*.pkl
+# Model files — included in repo so deployment has weights
+# models/*.pth
+# models/*.pkl
 
 # Test files
 test_*.py
@@ -64,6 +64,7 @@ check_*.py
 *.tmp
 *.bak
 *.mov
+*.zip
 
 # Environment variables
 .env
