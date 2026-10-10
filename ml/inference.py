@@ -4,15 +4,28 @@ Inference script for health monitoring models
 import os
 import json
 import numpy as np
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import pickle
-from sklearn.preprocessing import StandardScaler
 import logging
+from sklearn.preprocessing import StandardScaler
 
-from .models import create_models
-from preprocess.features import extract_features
+# torch is optional — not installed in production (demo uses fallback data)
+try:
+    import torch
+    import torch.nn as nn
+    import torch.nn.functional as F
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+
+try:
+    from .models import create_models
+except Exception:
+    pass
+
+try:
+    from preprocess.features import extract_features
+except Exception:
+    extract_features = None
 
 logger = logging.getLogger(__name__)
 
@@ -21,13 +34,15 @@ class HealthMonitoringInference:
     
     def __init__(self, model_dir='models'):
         self.model_dir = model_dir
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') if HAS_TORCH else None
         self.models = {}
         self.scalers = {}
         self.activity_map = {0: 'normal', 1: 'walking', 2: 'sitting', 3: 'standing', 4: 'fall'}
-        
-        # Load models and scalers
-        self._load_models()
+
+        if HAS_TORCH:
+            self._load_models()
+        else:
+            logger.warning("torch not installed — using dummy inference data")
     
     def _load_models(self):
         """Load trained models and scalers"""
