@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: health-monitoring-csi
+    runtime: python
+    buildCommand: pip install -r requirements-prod.txt
+    startCommand: gunicorn unified_app:app --workers 1 --threads 2 --timeout 120 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: MODEL_DIR
+        value: ./models
+      - key: DATABASE_URL
+        value: sqlite:///app.db
+      - key: UPLOAD_FOLDER
+        value: ./data/raw
+    healthCheckPath: /api/v1/health
