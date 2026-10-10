@@ -1,10 +1,15 @@
 """
 Machine learning models for health monitoring
 """
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import numpy as np
+
+try:
+    import torch
+    import torch.nn as nn
+    import torch.nn.functional as F
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
 
 class RespirationCNN(nn.Module):
     """CNN model for respiration rate estimation"""
